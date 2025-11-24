@@ -32,6 +32,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: demo-app
+  namespace: default
 spec:
   replicas: 2
   selector:
@@ -52,6 +53,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: demo-app
+  namespace: default
 spec:
   selector:
     app: demo-app
@@ -63,9 +65,12 @@ spec:
   type: NodePort
 EOF
 """
-                    sh "cat k8s.yaml"
-                    sh "kubectl apply -f k8s.yaml"
-                    sh "kubectl rollout restart deployment demo-app"
+                    // 显式指定 kubeconfig 路径，并开启详细日志
+                    sh "kubectl apply -f k8s.yaml --kubeconfig=/var/lib/jenkins/.kube/config -v=4"
+                    
+                    // 强制重启
+                    sh "kubectl rollout restart deployment demo-app --namespace=default --kubeconfig=/var/lib/jenkins/.kube/config"
+                    
                     echo "✅ Deployment Finished!"
                 }
             }
