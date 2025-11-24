@@ -24,7 +24,7 @@ pipeline {
                 script {
                     def deployImage = "192.168.76.141:5000/library/demo-app:${BUILD_NUMBER}"
                     
-                    // 动态生成 k8s.yaml，确保镜像地址正确
+                    // 动态生成 k8s.yaml
                     sh """
 cat <<EOF > k8s.yaml
 apiVersion: apps/v1
@@ -62,13 +62,22 @@ spec:
   type: NodePort
 EOF
 """
-                    // 打印内容以便调试
+                    // 打印调试信息
+                    echo "=== Debug Info ==="
+                    sh "pwd"
+                    sh "ls -l k8s.yaml"
                     sh "cat k8s.yaml"
                     
-                    // 执行部署
-                    sh "kubectl apply -f k8s.yaml"
+                    // 执行部署 (带详细日志)
+                    echo "=== Executing kubectl apply ==="
+                    sh "kubectl apply -f k8s.yaml -v=4"
                     
-                    // 强制重启以应用新镜像 (如果 Deployment 已存在)
+                    // 验证结果
+                    echo "=== Verifying Deployment ==="
+                    sh "kubectl get pods"
+                    sh "kubectl get svc"
+                    
+                    // 强制重启以应用新镜像
                     sh "kubectl rollout restart deployment demo-app || true"
                 }
             }
