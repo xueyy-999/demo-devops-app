@@ -2,69 +2,62 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>云原生DevOps平台演示</title>
+    <title>云原生DevOps平台 - 最终演示</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            color: white;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 50px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            animation: float 6s ease-in-out infinite;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #00f260, #0575e6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .status {
+            font-size: 1.5em;
+            color: #4caf50;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        .info {
+            font-size: 1.2em;
+            color: #ddd;
+            line-height: 1.6;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🎓 毕业设计答辩演示</h1>
-        <h2>云原生 DevOps 自动化平台</h2>
-        <p>学生：薛依阳</p>
-        <p>版本：Version 4.0</p>
-        <p>构建时间：2025-11-24</p>
-        <div class="tech-stack">
-            <span>Jenkins</span>
-            <span>Harbor</span>
-            <span>Kubernetes</span>
-            <span>Prometheus</span>
+    <div class="card">
+        <h1>🚀 自动部署成功！</h1>
+        <div class="status">✅ CI/CD 流水线运行正常</div>
+        <div class="info">
+            <p>🎓 毕业设计：云原生 DevOps 平台</p>
+            <p>👨‍💻 学生：薛毅扬</p>
+            <p>⏱️ 版本：Live Demo V2.0</p>
         </div>
     </div>
 </body>
-<style>
-    body {
-        margin: 0;
-        font-family: 'Segoe UI', Arial, sans-serif;
-        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-    }
-    .container {
-        text-align: center;
-        padding: 40px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 20px;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    }
-    h1 {
-        font-size: 3.5em;
-        margin: 0;
-        background: linear-gradient(to right, #ffd700, #ffed4e);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-    h2 {
-        font-size: 2em;
-        margin: 20px 0;
-    }
-    p {
-        font-size: 1.3em;
-        margin: 10px 0;
-    }
-    .tech-stack {
-        margin-top: 30px;
-        display: flex;
-        gap: 15px;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-    .tech-stack span {
-        background: rgba(255, 255, 255, 0.2);
-        padding: 10px 20px;
-        border-radius: 25px;
-        font-weight: bold;
-    }
-</style>
 </html>
