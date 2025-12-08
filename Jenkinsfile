@@ -66,10 +66,10 @@ spec:
 EOF
 """
                     // 显式指定 kubeconfig 路径，并开启详细日志
-                    sh "kubectl apply -f k8s.yaml --kubeconfig=/var/lib/jenkins/.kube/config -v=4"
+                    sh "kubectl apply -f k8s.yaml --insecure-skip-tls-verify=true --kubeconfig=/var/lib/jenkins/.kube/config -v=4"
                     
                     // 强制重启
-                    sh "kubectl rollout restart deployment demo-app --namespace=default --kubeconfig=/var/lib/jenkins/.kube/config"
+                    sh "kubectl rollout restart deployment demo-app --namespace=default --insecure-skip-tls-verify=true --kubeconfig=/var/lib/jenkins/.kube/config"
                     
                     echo "✅ Deployment Finished!"
                 }
